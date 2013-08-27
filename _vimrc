@@ -1,12 +1,12 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-08-27 18:15
+" -----------------     Date: 2013-08-28 06:37
 " -----------------     For Windows, Cygwin and Linux
 
 
 " 设置工作地点标志（在公司为1，在家为0）
-let g:atCompany = 1
+let g:atCompany = 0
 
 
 " 设置头文件路径，以及tags路径，用于代码补全
@@ -181,8 +181,8 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType lisp,ruby,eruby,coffee,jade,sh set shiftwidth=2
-au FileType lisp,ruby,eruby,coffee,jade,sh set tabstop=2
+au FileType lisp,coffee,jade,sh set shiftwidth=2
+au FileType lisp,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
@@ -325,9 +325,7 @@ let g:snipMate.scope_aliases['c']      = 'cpp'
 let g:snipMate.scope_aliases['php']    = 'php,html'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
 let g:snipMate.scope_aliases['blade']  = 'blade,html'
-let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
 let g:snipMate.scope_aliases['jst']    = 'jst,html'
-let g:snipMate.scope_aliases['scss']   = 'scss,css'
 let g:snipMate.scope_aliases['less']   = 'less,css'
 let g:snipMate.scope_aliases['xhtml']  = 'html'
 
@@ -351,7 +349,7 @@ let g:airline_theme='badwolf'                " 设置主题
 let g:syntastic_check_on_open=1              " 默认开启
 let g:syntastic_mode_map={'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'smarty', 'blade', 'eruby', 'jst', 'jade', 'scss', 'less']
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'smarty', 'blade', 'jst', 'jade', 'less']
             \}                               " 指定不需要检查的语言
 
 
@@ -453,8 +451,6 @@ func! Compile_Run_Code()
         exec "!clisp -i %:t"
     elseif &filetype == "php"
         exec "!php %:t"
-    elseif &filetype == "ruby"
-        exec "!ruby %:t"
     elseif &filetype == "coffee"
         exec "!coffee %:t"
     elseif &filetype == "javascript"
