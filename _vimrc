@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-08-29 08:16
+" -----------------     Date: 2013-08-30 14:16
 " -----------------     For Windows, Cygwin and Linux
 
 
@@ -13,7 +13,7 @@ let g:atCompany = 1
 if g:atCompany
     " set tags+=D:/Ruchee/workspace/common/tags
 else
-    " set path+=D:/Develop/TCC/include
+    " set path+=D:/Develop/MinGW/include
 endif
 
 
@@ -321,6 +321,7 @@ endif
 let g:snipMate                           = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
 let g:snipMate.scope_aliases             = {}
+let g:snipMate.scope_aliases['c']        = 'cpp'
 let g:snipMate.scope_aliases['php']      = 'php,html'
 let g:snipMate.scope_aliases['smarty']   = 'smarty,html'
 let g:snipMate.scope_aliases['blade']    = 'blade,html'
@@ -439,9 +440,15 @@ func! Compile_Run_Code()
     exec "w"
     if &filetype == "c"
         if g:isWIN
-            exec "!tcc %:t && %:r.exe"
+            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
         else
-            exec "!tcc %:t && ./%:r"
+            exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "cpp"
+        if g:isWIN
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
+        else
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
     elseif &filetype == "php"
         exec "!php %:t"

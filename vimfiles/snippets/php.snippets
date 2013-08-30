@@ -8,9 +8,9 @@ snippet //      多行注释
 snippet -       分隔注释
 	// -------------------------------${0}
 snippet php     单行标签
-	<?PHP ${0} ?>
+	<?php ${0} ?>
 snippet php.    跨行标签
-	<?PHP
+	<?php
 
 	${0}
 
@@ -326,25 +326,25 @@ snippet s_areg  注册自动载入函数
 	spl_autoload_register('${0}');
 #### 模板标签 ####
 snippet pe      输出标签
-	<?PHP echo ${0}; ?>
+	<?php echo ${0}; ?>
 snippet pp      输出标签 [PHP 5.4起默认可用]
 	<?= ${0} ?>
 snippet pif     if标签
-	<?PHP if (${1}): ?>
+	<?php if (${1}): ?>
 	${0}
-	<?PHP endif ?>
+	<?php endif ?>
 snippet pelif   elseif标签
-	<?PHP elseif (${0}): ?>
+	<?php elseif (${0}): ?>
 snippet pel     else标签
-	<?PHP else: ?>${0}
+	<?php else: ?>${0}
 snippet pfo     for标签
-	<?PHP for (${1}): ?>
+	<?php for (${1}): ?>
 	${0}
-	<?PHP endfor ?>
+	<?php endfor ?>
 snippet pfe     foreach标签
-	<?PHP foreach (${1}): ?>
+	<?php foreach (${1}): ?>
 	${0}
-	<?PHP endforeach ?>
+	<?php endforeach ?>
 # 单个关键字
 snippet ab      抽象类
 	abstract ${0}
