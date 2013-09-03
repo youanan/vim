@@ -117,6 +117,10 @@ snippet cs      case
 	case ${1}
 	  ${0}
 	end
+snippet w       when
+	when ${0}
+snippet t       then
+	then ${0}
 snippet do      do [无参数]
 	do
 	  ${0}
@@ -131,13 +135,13 @@ snippet be      代码块
 	  ${0}
 	end
 snippet ra      抛出异常
-	raise ${0}
+	raise${0}
 snippet res     捕获异常
-	rescue ${0}
+	rescue${0}
 snippet ens     善后处理
 	ensure${0}
 snippet thr     发出跳转执行流程的“信号”
-	throw ${0}
+	throw${0}
 snippet cat     捕获跳转“信号”，执行跳转
 	catch ${1} do
 	  ${0}
@@ -167,7 +171,7 @@ snippet eb      each_byte
 	each_byte ${0}
 snippet ec      each_char
 	each_char ${0}
-snippet el      each_line
+snippet eli     each_line
 	each_line ${0}
 snippet ep      传递键值分离的哈希对
 	each_pair ${0}
@@ -330,6 +334,8 @@ snippet sh      弹出数组的第一个元素
 	shift${0}
 snippet ush     向数组最前面插入元素
 	unshift${0}
+snippet squ     去除连续的重复字符
+	squeeze${0}
 snippet len     返回字符数或长度
 	length${0}
 snippet sz      size [等同于length]
@@ -378,6 +384,21 @@ snippet Obs     观察者
 	Observable${0}
 snippet Sin     单键
 	Singleton${0}
+# 常用类型
+snippet Int     整数
+	Integer${0}
+snippet Fix     小整数
+	Fixnum${0}
+snippet Big     大整数
+	Bignum${0}
+snippet Flo     浮点数
+	Float${0}
+snippet Str     字符串
+	String${0}
+snippet Arr     数组
+	Array${0}
+snippet Reg     正则表达式
+	Regexp${0}
 # 其他
 snippet s       self
 	self${0}
@@ -387,6 +408,8 @@ snippet x       %x[ .. ]
 	%${1}[${0}]
 snippet y       %x{ .. }
 	%${1}{${0}}
+snippet r       / .. /
+	/${0}/
 snippet {       #{ .. }
 	#{${0}
 snippet |       | .. |
