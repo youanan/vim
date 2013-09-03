@@ -1,12 +1,12 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-03 09:43
+" -----------------     Date: 2013-09-03 21:47
 " -----------------     For Windows, Cygwin and Linux
 
 
 " 设置工作地点标志（在公司为1，在家为0）
-let g:atCompany = 1
+let g:atCompany = 0
 
 
 " 设置头文件路径，以及tags路径，用于代码补全
@@ -321,11 +321,11 @@ endif
 let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
 let g:snipMate.scope_aliases           = {}
-let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
-let g:snipMate.scope_aliases['scss']   = 'scss,html'
-let g:snipMate.scope_aliases['php']    = 'php,html'
+let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
 let g:snipMate.scope_aliases['blade']  = 'blade,html'
+let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
+let g:snipMate.scope_aliases['scss']   = 'scss,html'
 let g:snipMate.scope_aliases['xhtml']  = 'html'
 
 
@@ -348,7 +348,7 @@ let g:airline_theme='badwolf'                " 设置主题
 let g:syntastic_check_on_open=1              " 默认开启
 let g:syntastic_mode_map={'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby', 'scss', 'smarty', 'blade']
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'smarty', 'blade', 'eruby', 'scss']
             \}                               " 指定不需要检查的语言
 
 
@@ -440,10 +440,10 @@ func! Compile_Run_Code()
         else
             exec "!tcc %:t && ./%:r"
         endif
-    elseif &filetype == "ruby"
-        exec "!ruby %:t"
     elseif &filetype == "php"
         exec "!php %:t"
+    elseif &filetype == "ruby"
+        exec "!ruby %:t"
     elseif &filetype == "sh"
         exec "!bash %:t"
     endif
