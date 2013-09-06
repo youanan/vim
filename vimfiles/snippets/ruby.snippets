@@ -306,11 +306,11 @@ snippet re      返回
 	return ${0}
 snippet br      跳出当前循环体
 	break${0}
-snippet ne      忽略本轮循环的剩余部分，继续下一轮循环
+snippet ne      忽略本轮循环的剩余部分，继续下一轮循环 [相当于continue]
 	next${0}
 snippet rd      重新开始本轮循环
 	redo${0}
-snippet rt      重新开始执行当前迭代
+snippet rt      重新开始执行当前代码块 [Ruby 1.9起不再支持迭代器]
 	retry${0}
 snippet yi      向代码块传递转移执行流程
 	yield${0}
