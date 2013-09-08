@@ -1,12 +1,12 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-06 19:09
+" -----------------     Date: 2013-09-08 20:38
 " -----------------     For Windows, Cygwin and Linux
 
 
 " 设置工作地点标志（在公司为1，在家为0）
-let g:atCompany = 1
+let g:atCompany = 0
 
 
 " 设置头文件路径，以及tags路径，用于代码补全
@@ -318,17 +318,18 @@ if g:isWIN
 else
     let g:snippets_dir='~/.vim/snippets/'
 endif
-let g:snipMate                         = {}
+let g:snipMate                             = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
-let g:snipMate.scope_aliases           = {}
-let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
-let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
-let g:snipMate.scope_aliases['blade']  = 'blade,html'
-let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
-let g:snipMate.scope_aliases['scss']   = 'scss,css'
-let g:snipMate.scope_aliases['jst']    = 'jst,html'
-let g:snipMate.scope_aliases['less']   = 'less,css'
-let g:snipMate.scope_aliases['xhtml']  = 'html'
+let g:snipMate.scope_aliases               = {}
+let g:snipMate.scope_aliases['php']        = 'php,html,codeigniter'
+let g:snipMate.scope_aliases['smarty']     = 'smarty,html'
+let g:snipMate.scope_aliases['blade']      = 'blade,html'
+let g:snipMate.scope_aliases['htmldjango'] = 'htmldjango,html'
+let g:snipMate.scope_aliases['eruby']      = 'eruby,html'
+let g:snipMate.scope_aliases['scss']       = 'scss,css'
+let g:snipMate.scope_aliases['jst']        = 'jst,html'
+let g:snipMate.scope_aliases['less']       = 'less,css'
+let g:snipMate.scope_aliases['xhtml']      = 'html'
 
 
 " NERD_commenter      注释处理插件
@@ -350,7 +351,7 @@ let g:airline_theme='badwolf'                " 设置主题
 let g:syntastic_check_on_open=1              " 默认开启
 let g:syntastic_mode_map={'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'smarty', 'blade', 'eruby', 'scss', 'jst', 'jade', 'less']
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'smarty', 'blade', 'python', 'htmldjango', 'eruby', 'scss', 'jst', 'jade', 'less']
             \}                               " 指定不需要检查的语言
 
 
