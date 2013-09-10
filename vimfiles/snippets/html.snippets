@@ -34,6 +34,8 @@ snippet style   内部样式表
 	    ${0}
 	</style>
 # 重量级标签
+snippet span     组合行内元素
+	<span>${0}</span>
 snippet div
 	<div${1}>${0}</div>
 snippet div.
@@ -44,8 +46,6 @@ snippet table   表格
 	<table${1}>
 	    ${0}
 	</table>
-snippet span     组合行内元素
-	<span>${0}</span>
 snippet tr
 	<tr>${0}</tr>
 snippet th
@@ -62,12 +62,14 @@ snippet form    表单
 	<form${1}>
 	    ${0}
 	</form>
-snippet input
+snippet input   输入框
 	<input type="${1}"${0} />
-snippet label
+snippet label   标签
 	<label for="${1}"${0}></label>
-snippet button
+snippet button  按钮
 	<button type="${1:button}"${0}></button>
+snippet img     图片
+	<img src="${1}"${0} />
 # 常用标签
 snippet a       链接
 	<a href="${0}"></a>
