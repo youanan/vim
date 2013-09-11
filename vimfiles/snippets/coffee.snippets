@@ -6,7 +6,7 @@ snippet //      多行注释
 	###
 snippet -       分隔注释
 	# -------------------------------${0}
-snippet ///     多行正则（可分多行，可加注释）
+snippet ///     多行正则 [可分多行，可加注释]
 	///${0}///
 snippet doc     """ .. """
 	"""${0}"""
@@ -25,11 +25,11 @@ snippet fc      构造函数
 snippet su      调用父类方法
 	super${0}
 # 函数
-snippet f       函数定义（无参数）
+snippet f       函数定义 [无参数]
 	${1:f_name} = ->${0}
-snippet f.      函数定义（带参数）
+snippet f.      函数定义 [带参数]
 	${1:f_name} = (${2}) ->${0}
-snippet ff      匿名函数（带参数）
+snippet ff      匿名函数 [带参数]
 	(${1}) ->${0}
 # 流程控制
 snippet if      if
@@ -93,6 +93,6 @@ snippet .       ->
 ################
 snippet >       jQuery选择器
 	$(${0})
-snippet >>      jQuery选择器（带引号）
+snippet >>      jQuery选择器 [带引号]
 	$('${1}')${0}
 ################
