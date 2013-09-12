@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-11 09:55
+" -----------------     Date: 2013-09-12 17:53
 " -----------------     For Windows, Cygwin and Linux
 
 
@@ -62,6 +62,7 @@ endif
 "
 " Ctrl + P                   --单词补全               [插入模式]
 " Tab键                      --语法结构补全   [插入模式][snipMate插件]
+" Ctrl+Y+,                   --HTML标签补全  [插入模式][zencoding插件]
 
 " ---------- 格式化命令 ----------
 "
@@ -328,10 +329,13 @@ let g:snipMate.scope_aliases['scheme']     = 'racket'
 let g:snipMate.scope_aliases['php']        = 'php,codeigniter,html'
 let g:snipMate.scope_aliases['smarty']     = 'smarty,html'
 let g:snipMate.scope_aliases['blade']      = 'blade,html'
+let g:snipMate.scope_aliases['twig']       = 'twig,html'
 let g:snipMate.scope_aliases['htmldjango'] = 'htmldjango,html'
 let g:snipMate.scope_aliases['eruby']      = 'eruby,html'
 let g:snipMate.scope_aliases['scss']       = 'scss,css'
 let g:snipMate.scope_aliases['jst']        = 'jst,html'
+let g:snipMate.scope_aliases['mustache']   = 'mustache,html'
+let g:snipMate.scope_aliases['handlebars'] = 'handlebars,html'
 let g:snipMate.scope_aliases['less']       = 'less,css'
 let g:snipMate.scope_aliases['html']       = 'html,angular'
 let g:snipMate.scope_aliases['xhtml']      = 'html'
@@ -356,7 +360,7 @@ let g:airline_theme='badwolf'                " 设置主题
 let g:syntastic_check_on_open=1              " 默认开启
 let g:syntastic_mode_map={'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'smarty', 'blade', 'python', 'htmldjango', 'eruby', 'scss', 'jst', 'jade', 'less']
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'python', 'eruby', 'scss']
             \}                               " 指定不需要检查的语言
 
 " javascript-libraries-syntax JS类库语法高亮 " 按需加载
