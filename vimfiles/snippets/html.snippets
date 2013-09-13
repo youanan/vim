@@ -1,6 +1,9 @@
 snippet doctype HTML5
 	<!DOCTYPE HTML>
 	${0}
+snippet ie      针对IE的处理
+	<!--[if lt IE ${1:9}]>${0}
+	<![endif]-->
 snippet !       HTML注释
 	<!-- ${0} -->
 snippet html
@@ -22,9 +25,9 @@ snippet body    主体
 	    ${0}
 	</body>
 snippet script. 外部脚本
-	<script src="${0}"></script>
+	<script type="text/javascript" src="${0}"></script>
 snippet script  内部脚本
-	<script>
+	<script type="text/javascript">
 	    ${0}
 	</script>
 snippet link    外部样式表
@@ -33,8 +36,10 @@ snippet style   内部样式表
 	<style type="text/css">
 	    ${0}
 	</style>
+snippet icon    指定网站小图标
+	<link rel="shortcut icon" href="${0}" />
 # 重量级标签
-snippet span     组合行内元素
+snippet span    组合行内元素
 	<span>${0}</span>
 snippet div
 	<div${1}>${0}</div>

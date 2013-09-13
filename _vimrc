@@ -1,12 +1,17 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-12 17:53
+" -----------------     Date: 2013-09-13 12:36
 " -----------------     For Windows, Cygwin and Linux
 
 
 " 设置工作地点标志（在公司为1，在家为0）
-let g:atCompany = 1
+" 根据D盘根目录下有无 atCompany.txt 文件判断，Linux 下可类比创建
+if filereadable("D:/atCompany.txt")
+    let g:atCompany = 1
+else
+    let g:atCompany = 0
+endif
 
 
 " 设置头文件路径，以及tags路径，用于代码补全
@@ -49,6 +54,7 @@ endif
 " \ig                        --显示/关闭对齐线
 " \bb                        --按=号对齐代码
 " \bn                        --自定义对齐
+" \th                        --一键生成与当前编辑文件同名的HTML文件 [不输出行号]
 "
 " \cc                        --添加注释               [NERD_commenter]
 " \cu                        --取消注释               [NERD_commenter]
@@ -262,9 +268,9 @@ if g:isGUI
     set guioptions+=c        " 使用字符提示框
     set guioptions-=m        " 隐藏菜单栏
     set guioptions-=T        " 隐藏工具栏
-    "set guioptions-=L       " 隐藏左侧滚动条
+    set guioptions-=L        " 隐藏左侧滚动条
     set guioptions-=r        " 隐藏右侧滚动条
-    "set guioptions-=b       " 隐藏底部滚动条
+    set guioptions-=b        " 隐藏底部滚动条
     "set showtabline=0       " 隐藏Tab栏
     set cursorline           " 突出显示当前行
 endif
@@ -442,6 +448,11 @@ endfunc
 imap <leader>rt <ESC>:call RemoveTabs()<CR>
 nmap <leader>rt :call RemoveTabs()<CR>
 vmap <leader>rt <ESC>:call RemoveTabs()<CR>
+
+" \th                 一键生成与当前编辑文件同名的HTML文件 [不输出行号]
+imap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
+nmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
+vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 
 
 " ======= 编译 && 运行 && 模板 ======= "
