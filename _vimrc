@@ -1,12 +1,12 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-13 12:36
+" -----------------     Date: 2013-09-13 18:31
 " -----------------     For Windows, Cygwin and Linux
 
 
 " 设置工作地点标志（在公司为1，在家为0）
-" 根据D盘根目录下有无 atCompany.txt 文件判断，Linux 下可类比创建
+" 根据 D 盘根目录下有无 atCompany.txt 文件判断，Linux 下可类比创建
 if filereadable("D:/atCompany.txt")
     let g:atCompany = 1
 else

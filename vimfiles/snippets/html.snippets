@@ -7,12 +7,12 @@ snippet ie      针对IE的处理
 snippet !       HTML注释
 	<!-- ${0} -->
 snippet html
-	<html>
+	<html${1}>
 	    ${0}
 	</html>
 # 头部信息
 snippet head    头部
-	<head>
+	<head${1}>
 	    ${0}
 	</head>
 snippet title   标题
@@ -21,26 +21,30 @@ snippet meta    页面信息
 	<meta charset="utf-8"${0} />
 # 主体信息
 snippet body    主体
-	<body>
+	<body${1}>
 	    ${0}
 	</body>
 snippet script. 外部脚本
-	<script type="text/javascript" src="${0}"></script>
+	<script type="text/javascript" src="${1}"${0}></script>
 snippet script  内部脚本
 	<script type="text/javascript">
 	    ${0}
 	</script>
 snippet link    外部样式表
-	<link rel="stylesheet" href="${0}" />
+	<link rel="stylesheet" href="${1}"${0} />
 snippet style   内部样式表
 	<style type="text/css">
 	    ${0}
 	</style>
 snippet icon    指定网站小图标
-	<link rel="shortcut icon" href="${0}" />
+	<link rel="shortcut icon" href="${1}"${0} />
 # 重量级标签
 snippet span    组合行内元素
-	<span>${0}</span>
+	<span${1}>${0}</span>
+snippet span.
+	<span${1}>
+	    ${0}
+	</span>
 snippet div
 	<div${1}>${0}</div>
 snippet div.
@@ -52,17 +56,41 @@ snippet table   表格
 	    ${0}
 	</table>
 snippet tr
-	<tr>${0}</tr>
+	<tr${1}>${0}</tr>
+snippet tr.
+	<tr${1}>
+	    ${0}
+	</tr>
 snippet th
-	<th>${0}</th>
+	<th${1}>${0}</th>
+snippet th.
+	<th${1}>
+	    ${0}
+	</th>
 snippet td
-	<td>${0}</td>
+	<td${1}>${0}</td>
+snippet td.
+	<td${1}>
+	    ${0}
+	</td>
 snippet dl
-	<dl>${0}</dl>
+	<dl${1}>${0}</dl>
+snippet dl.
+	<dl${1}>
+	    ${0}
+	</dl>
 snippet dt
-	<dt>${0}</dt>
+	<dt${1}>${0}</dt>
+snippet dt.
+	<dt${1}>
+	    ${0}
+	</dt>
 snippet dd
-	<dd>${0}</dd>
+	<dd${1}>${0}</dd>
+snippet dd.
+	<dd${1}>
+	    ${0}
+	</dd>
 snippet form    表单
 	<form${1}>
 	    ${0}
@@ -77,7 +105,7 @@ snippet img     图片
 	<img src="${1}"${0} />
 # 常用标签
 snippet a       链接
-	<a href="${0}"></a>
+	<a href="${1}"${0}></a>
 snippet hr
 	<hr/>${0}
 snippet h1
@@ -93,11 +121,23 @@ snippet h5
 snippet h6
 	<h6>${0}</h6>
 snippet ul
-	<ul>${0}</ul>
+	<ul${1}>${0}</ul>
+snippet ul.
+	<ul${1}>
+	    ${0}
+	</ul>
 snippet ol
-	<ol>${0}</ol>
+	<ol${1}>${0}</ol>
+snippet ol.
+	<ol${1}>
+	    ${0}
+	</ol>
 snippet li
-	<li>${0}</li>
+	<li${1}>${0}</li>
+snippet li.
+	<li${1}>
+	    ${0}
+	</li>
 # HTML5新增元素
 snippet section
 	<section${1}>
