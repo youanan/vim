@@ -2,6 +2,10 @@
 
 ----
 
+#### 配置文件的着色版本可访问这个地址浏览：`http://www.ruchee.com/public/_vimrc.html`
+
+----
+
 ## 本配置文件使用指南
 
 ----
@@ -12,7 +16,7 @@
 
 1. 访问 `http://www.vim.org/download.php#pc` 下载最新的 gVim [如无法访问该网站，可上 `http://vim.wendal.net/download.php#pc` 下载]
 2. 安装 gVim 到任意目录，这儿为方便讲解，我假定你安装到了 `D:\Apps\Vim`
-3. 将 `D:\Apps\Vim\vim7*` 目录加入环境变量 [不知何为环境变量者，请 Google]
+3. 将 `D:\Apps\Vim\vim7*` 目录（*指的是3或者4，视你安装的 Vim 版本而定）加入环境变量 [不知何为环境变量者，请 Google]
 4. 删除 Vim 安装目录下的 vimfiles 目录以及 _vimrc 文件 [如果是你自己修改过的配置，请注意备份]
 5. 使用 Git 将本项目拷贝到 Vim 安装目录下，取代已删文件的位置 [命令为 `git clone https://github.com/ruchee/vim.git`]（也可以点击本页面的 Download ZIP 按钮下载）
 6. 访问 `http://ctags.sourceforge.net` 下载最新的 ctags，将 ctags.exe 复制到 `D:\Apps\Vim\vim7*` 目录 [如无法访问该网站，可上 `https://code.google.com/p/unix-cmd-win32/downloads/list` 下载]

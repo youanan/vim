@@ -1,8 +1,9 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-13 18:31
+" -----------------     Date: 2013-09-14 19:00
 " -----------------     For Windows, Cygwin and Linux
+" -----------------  https://github.com/ruchee/vim
 
 
 " 设置工作地点标志（在公司为1，在家为0）
