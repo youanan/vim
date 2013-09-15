@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-14 19:00
+" -----------------     Date: 2013-09-15 15:42
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -485,6 +485,8 @@ func! Compile_Run_Code()
         else
             exec "!go build %:t && ./%:r"
         endif
+    elseif &filetype == "java"
+        exec "!javac %:t && java %:r"
     elseif &filetype == "scheme" || &filetype == "racket"
         exec "!racket -fi %:t"
     elseif &filetype == "lisp"
