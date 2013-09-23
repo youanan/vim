@@ -20,6 +20,8 @@ snippet ext     包含模块 [只对调用该方法的单个对象有效]
 	extend ${0}
 snippet rq      包含文件 [只加载一次]
 	require '${1}'${0}
+snippet rqr     相对包含
+	require_relative '${1}'${0}
 snippet ld      包含文件 [可加载多次]
 	load '${1}.rb'${0}
 # 模块、类

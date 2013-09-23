@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-15 15:42
+" -----------------     Date: 2013-09-23 14:01
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -189,15 +189,15 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType scheme,racket,lisp,lua,ruby,eruby,coffee,jade,sh set shiftwidth=2
-au FileType scheme,racket,lisp,lua,ruby,eruby,coffee,jade,sh set tabstop=2
+au FileType scala,clojure,scheme,racket,lisp,lua,ruby,eruby,coffee,jade,sh set shiftwidth=2
+au FileType scala,clojure,scheme,racket,lisp,lua,ruby,eruby,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
-au BufRead,BufNewFile *.h     setlocal ft=c
-au BufRead,BufNewFile *.di    setlocal ft=d
-au BufRead,BufNewFile *.dhtml setlocal ft=htmldjango
-au BufRead,BufNewFile *.sql   setlocal ft=mysql
-au BufRead,BufNewFile *.txt   setlocal ft=txt
+au BufRead,BufNewFile *.h        setlocal ft=c
+au BufRead,BufNewFile *.di       setlocal ft=d
+au BufRead,BufNewFile *.dhtml    setlocal ft=htmldjango
+au BufRead,BufNewFile *.sql      setlocal ft=mysql
+au BufRead,BufNewFile *.txt      setlocal ft=txt
 
 
 " 设置着色模式和字体
@@ -487,6 +487,8 @@ func! Compile_Run_Code()
         endif
     elseif &filetype == "java"
         exec "!javac %:t && java %:r"
+    elseif &filetype == "scala"
+        exec "!scalac %:t && scala %:r"
     elseif &filetype == "scheme" || &filetype == "racket"
         exec "!racket -fi %:t"
     elseif &filetype == "lisp"
