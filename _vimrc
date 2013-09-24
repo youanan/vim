@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-23 14:01
+" -----------------     Date: 2013-09-24 17:03
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -495,6 +495,8 @@ func! Compile_Run_Code()
         exec "!clisp -i %:t"
     elseif &filetype == "lua"
         exec "!lua %:t"
+    elseif &filetype == "perl"
+        exec "!perl %:t"
     elseif &filetype == "php"
         exec "!php %:t"
     elseif &filetype == "python"
