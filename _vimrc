@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-24 17:03
+" -----------------     Date: 2013-09-28 20:51
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -15,11 +15,9 @@ else
 endif
 
 
-" 设置头文件路径，以及tags路径，用于代码补全
+" 设置tags路径，用于代码补全
 if g:atCompany
     " set tags+=D:/Ruchee/workspace/common/tags
-else
-    " set path+=D:/Develop/MinGW/include
 endif
 
 
@@ -189,15 +187,12 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType scala,clojure,scheme,racket,lisp,lua,ruby,eruby,coffee,jade,sh set shiftwidth=2
-au FileType scala,clojure,scheme,racket,lisp,lua,ruby,eruby,coffee,jade,sh set tabstop=2
+au FileType coffee,jade,sh set shiftwidth=2
+au FileType coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
-au BufRead,BufNewFile *.h        setlocal ft=c
-au BufRead,BufNewFile *.di       setlocal ft=d
-au BufRead,BufNewFile *.dhtml    setlocal ft=htmldjango
-au BufRead,BufNewFile *.sql      setlocal ft=mysql
-au BufRead,BufNewFile *.txt      setlocal ft=txt
+au BufRead,BufNewFile *.sql setlocal ft=mysql
+au BufRead,BufNewFile *.txt setlocal ft=txt
 
 
 " 设置着色模式和字体
@@ -328,24 +323,17 @@ if g:isWIN
 else
     let g:snippets_dir='~/.vim/snippets/'
 endif
-let g:snipMate                             = {}
+let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
-let g:snipMate.scope_aliases               = {}
-let g:snipMate.scope_aliases['c']          = 'cpp'
-let g:snipMate.scope_aliases['scheme']     = 'racket'
-let g:snipMate.scope_aliases['php']        = 'php,codeigniter,html'
-let g:snipMate.scope_aliases['smarty']     = 'smarty,html'
-let g:snipMate.scope_aliases['blade']      = 'blade,html'
-let g:snipMate.scope_aliases['twig']       = 'twig,html'
-let g:snipMate.scope_aliases['htmldjango'] = 'htmldjango,html'
-let g:snipMate.scope_aliases['eruby']      = 'eruby,html'
-let g:snipMate.scope_aliases['scss']       = 'scss,css'
-let g:snipMate.scope_aliases['jst']        = 'jst,html'
-let g:snipMate.scope_aliases['mustache']   = 'mustache,html'
-let g:snipMate.scope_aliases['handlebars'] = 'handlebars,html'
-let g:snipMate.scope_aliases['less']       = 'less,css'
-let g:snipMate.scope_aliases['html']       = 'html,angular'
-let g:snipMate.scope_aliases['xhtml']      = 'html'
+let g:snipMate.scope_aliases           = {}
+let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
+let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
+let g:snipMate.scope_aliases['blade']  = 'blade,html'
+let g:snipMate.scope_aliases['twig']   = 'blade,html'
+let g:snipMate.scope_aliases['jst']    = 'jst,html'
+let g:snipMate.scope_aliases['less']   = 'less,css'
+let g:snipMate.scope_aliases['html']   = 'html,angular'
+let g:snipMate.scope_aliases['xhtml']  = 'html'
 
 
 " NERD_commenter      注释处理插件
@@ -367,7 +355,7 @@ let g:airline_theme='badwolf'                " 设置主题
 let g:syntastic_check_on_open=1              " 默认开启
 let g:syntastic_mode_map={'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'python', 'eruby', 'scss']
+            \'passive_filetypes': ['html', 'css', 'xhtml']
             \}                               " 指定不需要检查的语言
 
 " javascript-libraries-syntax JS类库语法高亮 " 按需加载
@@ -461,48 +449,8 @@ vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><
 " 编译并运行
 func! Compile_Run_Code()
     exec "w"
-    if &filetype == "c"
-        if g:isWIN
-            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
-        else
-            exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
-        endif
-    elseif &filetype == "cpp"
-        if g:isWIN
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
-        else
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
-        endif
-    elseif &filetype == "d"
-        if g:isWIN
-            exec "!dmd -wi -unittest %:t && %:r.exe"
-        else
-            exec "!dmd -wi -unittest %:t && ./%:r"
-        endif
-    elseif &filetype == "go"
-        if g:isWIN
-            exec "!go build %:t && %:r.exe"
-        else
-            exec "!go build %:t && ./%:r"
-        endif
-    elseif &filetype == "java"
-        exec "!javac %:t && java %:r"
-    elseif &filetype == "scala"
-        exec "!scalac %:t && scala %:r"
-    elseif &filetype == "scheme" || &filetype == "racket"
-        exec "!racket -fi %:t"
-    elseif &filetype == "lisp"
-        exec "!clisp -i %:t"
-    elseif &filetype == "lua"
-        exec "!lua %:t"
-    elseif &filetype == "perl"
-        exec "!perl %:t"
-    elseif &filetype == "php"
+    if &filetype == "php"
         exec "!php %:t"
-    elseif &filetype == "python"
-        exec "!python %:t"
-    elseif &filetype == "ruby"
-        exec "!ruby %:t"
     elseif &filetype == "coffee"
         exec "!coffee %:t"
     elseif &filetype == "javascript"
