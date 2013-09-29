@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-09-28 20:51
+" -----------------     Date: 2013-09-29 12:34
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -15,9 +15,12 @@ else
 endif
 
 
-" 设置tags路径，用于代码补全
+" 设置头文件和tags路径，用于代码补全
 if g:atCompany
     " set tags+=D:/Ruchee/workspace/common/tags
+    " set path+=D:/Ruchee/MinGW/include
+else
+    " set path+=D:/Develop/MinGW/include
 endif
 
 
@@ -187,10 +190,11 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType coffee,jade,sh set shiftwidth=2
-au FileType coffee,jade,sh set tabstop=2
+au FileType lisp,coffee,jade,sh set shiftwidth=2
+au FileType lisp,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
+au BufRead,BufNewFile *.h   setlocal ft=c
 au BufRead,BufNewFile *.sql setlocal ft=mysql
 au BufRead,BufNewFile *.txt setlocal ft=txt
 
@@ -326,6 +330,7 @@ endif
 let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
 let g:snipMate.scope_aliases           = {}
+let g:snipMate.scope_aliases['c']      = 'cpp'
 let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
 let g:snipMate.scope_aliases['blade']  = 'blade,html'
@@ -449,7 +454,21 @@ vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><
 " 编译并运行
 func! Compile_Run_Code()
     exec "w"
-    if &filetype == "php"
+    if &filetype == "c"
+        if g:isWIN
+            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
+        else
+            exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "cpp"
+        if g:isWIN
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
+        else
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "lisp"
+        exec "!clisp -i %:t"
+    elseif &filetype == "php"
         exec "!php %:t"
     elseif &filetype == "coffee"
         exec "!coffee %:t"
