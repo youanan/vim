@@ -32,14 +32,23 @@ snippet f.      函数定义 [带参数]
 snippet ff      匿名函数 [带参数]
 	(${1}) ->${0}
 # 流程控制
-snippet if      if
+snippet if      if [同一行]
 	if ${0}
-snippet th      then
+snippet if.     if [换行]
+	if
+	  ${0}
+snippet th      then [同一行]
 	then ${0}
+snippet th.     then [换行]
+	then
+	  ${0}
 snippet elif    else if
 	else if ${0}
-snippet el      else
+snippet el      else [同一行]
 	else ${0}
+snippet el.     else [换行]
+	else
+	  ${0}
 snippet ul      除 .. 之外
 	unless ${0}
 snippet fo      for
@@ -88,6 +97,9 @@ snippet al      alert
 	alert ${0}
 snippet p       输出
 	console.log ${0}
+# 其他
+snippet {       #{ .. }
+	#{${0}
 ################
 snippet .       jQuery选择器
 	$(${0})
