@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-08 12:51
+" -----------------     Date: 2013-10-09 18:30
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -143,6 +143,8 @@ endif
 " yf字符                     --复制本行内容，直到遇到第一个指定字符 [包括该字符]
 " vf字符                     --选中本行内容，直到遇到第一个指定字符 [包括该字符]
 "
+" XT 和 XF 是 Xt/Xf 的反方向操作
+"
 " ---------- 便捷操作 ----------
 "
 " Ctrl + A                   --将当前光标所在数字自增1        [仅普通模式可用]
@@ -190,8 +192,8 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
-au FileType ruby,eruby,slim,coffee,jade,sh set tabstop=2
+au FileType lua,ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
+au FileType lua,ruby,eruby,slim,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
@@ -457,16 +459,18 @@ func! Compile_Run_Code()
     exec "w"
     if &filetype == "c"
         if g:isWIN
-            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
+            exec "!gcc -Wall -o %:r %:t && %:r.exe"
         else
-            exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
+            exec "!gcc -Wall -o %:r %:t && ./%:r"
         endif
     elseif &filetype == "cpp"
         if g:isWIN
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
+            exec "!g++ -Wall -o %:r %:t && %:r.exe"
         else
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
+            exec "!g++ -Wall -o %:r %:t && ./%:r"
         endif
+    elseif &filetype == "lua"
+        exec "!lua %:t"
     elseif &filetype == "php"
         exec "!php %:t"
     elseif &filetype == "ruby"
@@ -475,8 +479,6 @@ func! Compile_Run_Code()
         exec "!coffee %:t"
     elseif &filetype == "javascript"
         exec "!node %:t"
-    elseif &filetype == "php"
-        exec "!php %:t"
     elseif &filetype == "sh"
         exec "!bash %:t"
     endif

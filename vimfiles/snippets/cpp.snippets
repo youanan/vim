@@ -13,6 +13,10 @@ snippet ini     包含标准输入输出库
 	#include <iostream>${0}
 snippet ins     包含标准输入输出头文件
 	#include <stdio.h>${0}
+snippet im      包含系统头文件 [Objective-C]
+	#import <${1}>${0}
+snippet im.     包含自定义头文件 [Objective-C]
+	#import "${1}"${0}
 snippet df      宏定义
 	#define ${0}
 snippet ifdf    包含了指定头文件时的处理方式
@@ -38,11 +42,13 @@ snippet cl      类定义
 	    ${0}
 	};
 snippet fc      构造函数
-	${1:f_name} (${2}) ${3} {
+	${1:f_name} (${2}) ${3}
+	{
 	    ${0}
 	}
 snippet fd      析构函数
-	~${1:f_name} () {
+	~${1:f_name} ()
+	{
 	    ${0}
 	}
 # 异常处理
@@ -62,19 +68,22 @@ snippet fin     善后处理
 	}
 # 函数
 snippet main    主函数
-	int main (int argc, char *argv[]) {
+	int main (int argc, char *argv[])
+	{
 	    ${0}
 
 	    return 0;
 	}
 snippet f       函数定义
-	${1:void} ${2:f_name} (${3}) {
+	${1:void} ${2:f_name} (${3})
+	{
 	    ${0}
 	}
 snippet ff      函数声明
 	${1:void} ${2:f_name} (${0});
 snippet cf      类方法定义
-	${1:void} ${2:f_name} (${3}) ${4} {
+	${1:void} ${2:f_name} (${3}) ${4}
+	{
 	    ${0}
 	}
 # 复合类型
