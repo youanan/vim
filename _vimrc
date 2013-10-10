@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-09 18:30
+" -----------------     Date: 2013-10-10 16:26
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -333,9 +333,10 @@ let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
 let g:snipMate.scope_aliases           = {}
 let g:snipMate.scope_aliases['c']      = 'cpp'
-let g:snipMate.scope_aliases['php']    = 'php,html'
+let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
 let g:snipMate.scope_aliases['blade']  = 'blade,html'
+let g:snipMate.scope_aliases['twig']   = 'twig,html'
 let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
 let g:snipMate.scope_aliases['scss']   = 'scss,css'
 let g:snipMate.scope_aliases['jst']    = 'jst,html'
