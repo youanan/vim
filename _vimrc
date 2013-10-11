@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-10 16:26
+" -----------------     Date: 2013-10-11 08:19
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -192,11 +192,12 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType lua,ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
-au FileType lua,ruby,eruby,slim,coffee,jade,sh set tabstop=2
+au FileType lisp,lua,ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
+au FileType lisp,lua,ruby,eruby,slim,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
+au BufRead,BufNewFile *.cl  setlocal ft=lisp
 au BufRead,BufNewFile *.sql setlocal ft=mysql
 au BufRead,BufNewFile *.txt setlocal ft=txt
 
@@ -336,6 +337,7 @@ let g:snipMate.scope_aliases['c']      = 'cpp'
 let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
 let g:snipMate.scope_aliases['blade']  = 'blade,html'
+let g:snipMate.scope_aliases['latte']  = 'latte,html'
 let g:snipMate.scope_aliases['twig']   = 'twig,html'
 let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
 let g:snipMate.scope_aliases['scss']   = 'scss,css'
@@ -460,16 +462,18 @@ func! Compile_Run_Code()
     exec "w"
     if &filetype == "c"
         if g:isWIN
-            exec "!gcc -Wall -o %:r %:t && %:r.exe"
+            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
         else
-            exec "!gcc -Wall -o %:r %:t && ./%:r"
+            exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
         endif
     elseif &filetype == "cpp"
         if g:isWIN
-            exec "!g++ -Wall -o %:r %:t && %:r.exe"
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
         else
-            exec "!g++ -Wall -o %:r %:t && ./%:r"
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
+    elseif &filetype == "lisp"
+        exec "!clisp -i %:t"
     elseif &filetype == "lua"
         exec "!lua %:t"
     elseif &filetype == "php"

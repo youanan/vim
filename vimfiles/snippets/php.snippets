@@ -27,7 +27,7 @@ snippet u       引用命名空间
 snippet uas     引用命名空间并定义别名
 	use ${1} as ${2};${0}
 snippet n       新建类实例
-	new ${0}
+	new ${0};
 # 代码重用
 snippet rq      require包含
 	require '${1}';${0}
@@ -307,20 +307,27 @@ snippet ra      数组生成器
 	range(${1}, ${0})
 snippet ar      定义数组
 	array(${0})
-snippet bc      进制转换
+snippet bco     进制转换
 	base_convert(${1}, ${2}, ${0})
-snippet lv      生成一个0到1之间的随机数
+snippet lva     生成一个0到1之间的随机数
 	lcg_value()${0}
-snippet mr      生成一个指定范围内的随机数
+snippet mra     生成一个指定范围内的随机数
 	mt_rand(${0})
 snippet exp     字符串分割
 	explode('${1}', ${0})
 snippet imp     字符串组合
 	implode('${1}', ${0})
-snippet jen     JSON数据的编码
+snippet jen     编程成JSON
 	json_encode(${0})
-snippet jde     JSON数据的解码
+snippet jde     解码JSON
 	json_decode(${0})
+snippet uen     编码URL字符串
+	urlencode(${0})
+snippet ude     解码已编码的URL字符串
+	urldecode(${0})
+#### 出错处理 #####
+snippet elog    写出错日志
+	error_log(${0})
 #### PHP标准库 #####
 snippet s_areg  注册自动载入函数
 	spl_autoload_register('${0}');
