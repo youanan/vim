@@ -26,10 +26,14 @@ snippet su      调用父类方法
 	super${0}
 # 函数
 snippet f       函数定义 [无参数]
-	${1:f_name} = ->${0}
+	${1:f_name} = ->
+	  ${0}
 snippet f.      函数定义 [带参数]
-	${1:f_name} = (${2}) ->${0}
-snippet ff      匿名函数 [带参数]
+	${1:f_name} = (${2}) ->
+	  ${0}
+snippet ff      匿名函数 [无参数]
+	-> ${0}
+snippet ff.     匿名函数 [带参数]
 	(${1}) ->${0}
 # 流程控制
 snippet if      if [同一行]
@@ -53,15 +57,17 @@ snippet ul      除 .. 之外
 	unless ${0}
 snippet fo      for
 	for ${0}
-snippet foi     for .. in [针对array]
+snippet fi      for .. in [针对array]
 	for ${1} in ${0}
 snippet foo     for .. of [针对object]
 	for ${1} of ${0}
+snippet fooo    for .. of [不包含继承来的属性]
+	for own ${1} of ${0}
 snippet wh      while循环 [只要 .. 就继续]
 	while ${0}
-snippet ut      until循环 [直到 .. 才停止]
+snippet ut      until循环 [直到 .. 才停止，相当于 while not]
 	until ${0}
-snippet lo      loop [相当于while true]
+snippet lo      loop [相当于 while true]
 	loop ${0}
 snippet sw      switch
 	switch ${0}
@@ -83,6 +89,8 @@ snippet fin     善后处理
 # 单个关键字
 snippet t       this
 	this${0}
+snippet o       own
+	own ${0}
 snippet tp      类型检查
 	typeof ${0}
 snippet co      继续
@@ -91,6 +99,8 @@ snippet re      返回
 	return${0}
 snippet arg     全局参数数组
 	arguments${0}
+snippet udf     undefined
+	undefined${0}
 snippet pi      print
 	print ${0}
 snippet al      alert
