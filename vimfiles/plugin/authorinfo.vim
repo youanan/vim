@@ -141,6 +141,8 @@ function s:AddTitle()
     normal o
     call setline('.',noTypeChar.preChar.'  CreateTime: '.strftime("%Y-%m-%d %H:%M"))
     normal o
+    call setline('.',noTypeChar.preChar.' Description: '.'文件描述')
+    normal o
     call setline('.',noTypeChar.'===================================================================')
     let lastLine = line('.')
     let gotoLn = line('.')  " 指示光标最后停留的位置

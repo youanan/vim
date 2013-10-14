@@ -1,4 +1,4 @@
-snippet doctype HTML5
+snippet doctype 文档声明
 	<!DOCTYPE HTML>
 	${0}
 snippet ie      针对IE的处理
@@ -28,26 +28,26 @@ snippet script. 外部脚本
 	<script type="text/javascript" src="${1}"${0}></script>
 snippet script  内部脚本
 	<script type="text/javascript">
-	    ${0}
+	${0}
 	</script>
 snippet link    外部样式表
 	<link rel="stylesheet" href="${1}"${0} />
 snippet style   内部样式表
 	<style type="text/css">
-	    ${0}
+	${0}
 	</style>
 snippet icon    指定网站小图标
 	<link rel="shortcut icon" href="${1}"${0} />
 # 重量级标签
 snippet span    组合行内元素
 	<span${1}>${0}</span>
-snippet span.
+snippet span.   组合行内元素 [换行]
 	<span${1}>
 	    ${0}
 	</span>
-snippet div
+snippet div     内容块
 	<div${1}>${0}</div>
-snippet div.
+snippet div.    内容块 [换行]
 	<div${1}>
 	    ${0}
 	</div>
@@ -55,39 +55,39 @@ snippet table   表格
 	<table${1}>
 	    ${0}
 	</table>
-snippet tr
+snippet tr      表格行
 	<tr${1}>${0}</tr>
-snippet tr.
+snippet tr.     表格行 [换行]
 	<tr${1}>
 	    ${0}
 	</tr>
-snippet th
+snippet th      表头单元格
 	<th${1}>${0}</th>
-snippet th.
+snippet th.     表头单元格 [换行]
 	<th${1}>
 	    ${0}
 	</th>
-snippet td
+snippet td      标准单元格
 	<td${1}>${0}</td>
-snippet td.
+snippet td.     标准单元格 [换行]
 	<td${1}>
 	    ${0}
 	</td>
-snippet dl
+snippet dl      定义列表
 	<dl${1}>${0}</dl>
-snippet dl.
+snippet dl.     定义列表 [换行]
 	<dl${1}>
 	    ${0}
 	</dl>
-snippet dt
+snippet dt      定义列表项目
 	<dt${1}>${0}</dt>
-snippet dt.
+snippet dt.     定义列表项目 [换行]
 	<dt${1}>
 	    ${0}
 	</dt>
-snippet dd
+snippet dd      描述列表项目
 	<dd${1}>${0}</dd>
-snippet dd.
+snippet dd.     描述列表项目 [换行]
 	<dd${1}>
 	    ${0}
 	</dd>
@@ -106,7 +106,9 @@ snippet img     图片
 # 常用标签
 snippet a       链接
 	<a href="${1}"${2}>${0}</a>
-snippet hr
+snippet b       换行标签
+	<br/>${0}
+snippet hr      水平线
 	<hr/>${0}
 snippet h1
 	<h1>${0}</h1>
@@ -120,24 +122,29 @@ snippet h5
 	<h5>${0}</h5>
 snippet h6
 	<h6>${0}</h6>
-snippet ul
+snippet ul      无序列表
 	<ul${1}>${0}</ul>
-snippet ul.
+snippet ul.     无序列表 [换行]
 	<ul${1}>
 	    ${0}
 	</ul>
-snippet ol
+snippet ol      有序列表
 	<ol${1}>${0}</ol>
-snippet ol.
+snippet ol.     有序列表 [换行]
 	<ol${1}>
 	    ${0}
 	</ol>
-snippet li
+snippet li      列表项目
 	<li${1}>${0}</li>
-snippet li.
+snippet li.     列表项目 [换行]
 	<li${1}>
 	    ${0}
 	</li>
+# 效果标签
+snippet strong  强调文本，程度比em更高
+	<strong>${0}</strong>
+snippet em      强调文本，通常表现为斜体
+	<em>${0}</em>
 # HTML5新增元素
 snippet section
 	<section${1}>

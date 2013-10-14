@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-13 20:50
+" -----------------     Date: 2013-10-14 12:00
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -336,6 +336,7 @@ let g:snipMate.scope_aliases['c']      = 'cpp'
 let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
 let g:snipMate.scope_aliases['xhtml']  = 'html'
+let g:snipMate.scope_aliases['html']   = 'html,angular'
 
 
 " NERD_commenter      注释处理插件
@@ -481,12 +482,9 @@ vmap <leader>T <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
 " ======= Vimwiki ======= "
 
 let g:vimwiki_w32_dir_enc='utf-8' " 设置编码
-
 let g:vimwiki_use_mouse=1         " 使用鼠标映射
-
-" 声明可以在wiki里面使用的HTML标签
 let g:vimwiki_valid_html_tags = 'a,img,b,i,s,u,sub,sup,br,hr,div,del,code,red,center,left,right,h1,h2,h3,h4,h5,h6,pre,script,style'
-
+                                  " 声明可以在wiki里面使用的HTML标签
 let blog = {}
 if g:isWIN
     if g:atCompany
