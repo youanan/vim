@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-14 12:00
+" -----------------     Date: 2013-10-16 00:32
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -155,17 +155,6 @@ endif
 " m字符       and '字符      --标记位置 and 跳转到标记位置
 " q字符 xxx q and @字符      --录制宏   and 执行宏
 
-" ---------- Splitjoin.vim [代码形式转换插件] -----------------
-"
-" gJ                         --将多行代码集中成单行
-" gS                         --将单行代码扩展成多行
-
-" ---------- Vimwiki [Vim中的wiki/blog系统] ----------------
-"
-" 链接：[[链接地址|链接描述]]
-" 图片：{{图片地址||属性1="属性值" 属性2="属性值"}}
-" 代码：{{{class="brush: cpp" 代码}}}
-"
 " ---------- 其他常用内建命令 ------------------------------
 "
 " :se ff=unix                --更改文件格式，可选 unix、dos、mac
@@ -192,11 +181,12 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType sh set shiftwidth=2
-au FileType sh set tabstop=2
+au FileType lisp,sh set shiftwidth=2
+au FileType lisp,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
+au BufRead,BufNewFile *.cl  setlocal ft=lisp
 au BufRead,BufNewFile *.sql setlocal ft=mysql
 au BufRead,BufNewFile *.txt setlocal ft=txt
 
@@ -223,7 +213,6 @@ set incsearch                " 开启实时搜索功能
 set hlsearch                 " 开启高亮显示结果
 set nowrapscan               " 搜索到文件两端时不重新搜索
 set nocompatible             " 关闭兼容模式
-"set vb t_vb=                " 关闭提示音 [会闪屏]
 set hidden                   " 允许在有未保存的修改时切换缓冲区
 set autochdir                " 设定文件浏览器目录为当前目录
 set foldmethod=syntax        " 选择代码折叠类型
@@ -235,7 +224,7 @@ set autoread                 " 当文件在外部被修改时自动更新该文�
 set nobackup
 set list                     " 显示特殊字符，其中Tab使用高亮竖线代替，尾部空白使用高亮点号代替
 set listchars=tab:\|\ ,trail:.
-set expandtab                " 将Tab自动转化成空格    [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+set expandtab                " 将Tab自动转化成空格 [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
 "set showmatch               " 显示括号配对情况
 "set nowrap                  " 设置不自动换行
 
@@ -461,6 +450,14 @@ func! Compile_Run_Code()
         else
             exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
+    elseif &filetype == "go"
+        if g:isWIN
+            exec "!go build %:t && %:r.exe"
+        else
+            exec "!go build %:t && ./%:r"
+        endif
+    elseif &filetype == "lisp"
+        exec "!clisp -i %:t"
     elseif &filetype == "php"
         exec "!php %:t"
     elseif &filetype == "sh"
@@ -477,32 +474,3 @@ vmap <leader>R <ESC>:call Compile_Run_Code()<CR>
 imap <leader>T <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
 nmap <leader>T :LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
 vmap <leader>T <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
-
-
-" ======= Vimwiki ======= "
-
-let g:vimwiki_w32_dir_enc='utf-8' " 设置编码
-let g:vimwiki_use_mouse=1         " 使用鼠标映射
-let g:vimwiki_valid_html_tags = 'a,img,b,i,s,u,sub,sup,br,hr,div,del,code,red,center,left,right,h1,h2,h3,h4,h5,h6,pre,script,style'
-                                  " 声明可以在wiki里面使用的HTML标签
-let blog = {}
-if g:isWIN
-    if g:atCompany
-        let blog.path          = 'D:/Ruchee/Files/mysite/wiki/'
-        let blog.path_html     = 'D:/Ruchee/Files/mysite/html/'
-        let blog.template_path = 'D:/Ruchee/Files/mysite/templates/'
-    else
-        let blog.path          = 'D:/Ruchee/mysite/wiki/'
-        let blog.path_html     = 'D:/Ruchee/mysite/html/'
-        let blog.template_path = 'D:/Ruchee/mysite/templates/'
-    endif
-else
-    let blog.path          = '~/mysite/wiki/'
-    let blog.path_html     = '~/mysite/html/'
-    let blog.template_path = '~/mysite/templates/'
-endif
-let blog.template_default  = 'site'
-let blog.template_ext      = '.html'
-let blog.auto_export       = 1
-
-let g:vimwiki_list = [blog]
