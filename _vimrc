@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-17 17:15
+" -----------------     Date: 2013-10-17 23:38
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -187,8 +187,8 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
-au FileType ruby,eruby,slim,coffee,jade,sh set tabstop=2
+au FileType lua,ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
+au FileType lua,ruby,eruby,slim,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
@@ -463,6 +463,8 @@ func! Compile_Run_Code()
         endif
     elseif &filetype == "php"
         exec "!php %:t"
+    elseif &filetype == "lua"
+        exec "!lua %:t"
     elseif &filetype == "ruby"
         exec "!ruby %:t"
     elseif &filetype == "coffee"
