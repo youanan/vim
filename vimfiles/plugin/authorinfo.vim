@@ -136,12 +136,10 @@ function s:AddTitle()
     call setline('.',noTypeChar.preChar.'      Author: '.g:vimrc_author)
     normal o
     call setline('.',noTypeChar.preChar.'       Email: '.g:vimrc_email)
-    normal o
-    call setline('.',noTypeChar.preChar.'     WebSite: '.g:vimrc_homepage)
+    " normal o
+    " call setline('.',noTypeChar.preChar.'     WebSite: '.g:vimrc_homepage)
     normal o
     call setline('.',noTypeChar.preChar.'  CreateTime: '.strftime("%Y-%m-%d %H:%M"))
-    normal o
-    call setline('.',noTypeChar.preChar.' Description: '.'文件描述')
     normal o
     call setline('.',noTypeChar.'===================================================================')
     let lastLine = line('.')
