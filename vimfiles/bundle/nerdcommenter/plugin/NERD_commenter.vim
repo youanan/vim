@@ -251,6 +251,7 @@ let s:delimiterMap = {
     \ 'modula2': { 'left': '(*', 'right': '*)' },
     \ 'modula3': { 'left': '(*', 'right': '*)' },
     \ 'monk': { 'left': ';' },
+    \ 'moon': { 'left': '--' },
     \ 'mush': { 'left': '#' },
     \ 'mustache': { 'left': '{{!', 'right': '}}' },
     \ 'named': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
