@@ -53,15 +53,15 @@ snippet tra     内含模块定义 [用于实现Mixin]
 	    ${0}
 	}
 snippet cle     带继承的类定义
-	class ${1:cl_nameA} extends ${2:cl_nameB} {
+	class ${1:cl_name} extends ${2:pa_name} {
 	    ${0}
 	}
 snippet cli     实现接口的类定义
-	class ${1:cl_name} implements ${2:cl_intName} {
+	class ${1:cl_name} implements ${2:int_name} {
 	    ${0}
 	}
 snippet clei    先继承后实现接口的类定义
-	class ${1:cl_nameA} extends ${2:cl_nameB} implements ${3:cl_intName} {
+	class ${1:cl_name} extends ${2:pa_name} implements ${3:int_name} {
 	    ${0}
 	}
 snippet clee    继承异常类
@@ -397,3 +397,5 @@ snippet ?       三元运算符
 	$${1} ? $${2:$1} : ${0};
 snippet .       =>
 	=> ${0}
+snippet ,       $
+	$${0}
