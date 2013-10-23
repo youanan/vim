@@ -88,7 +88,7 @@ snippet la?     是否是一个Lambda
 	lambda?${0}
 snippet l       匿名函数 [简写形式]
 	->${1} { ${0} }
-snippet ca      Proc call
+snippet ca      调用函数
 	call${0}
 # 流程控制
 snippet if      if
@@ -159,6 +159,10 @@ snippet E       Exception
 # 迭代器
 snippet lo      loop
 	loop ${0}
+snippet lod     loop do .. end
+	loop do
+	  ${0}
+	end
 snippet tm      times
 	times ${0}
 snippet up      upto
@@ -170,19 +174,19 @@ snippet st      step [可指定步进值]
 snippet e       each
 	each ${0}
 snippet ewi     each_with_index
-	each_with_index ${0}
+	each_with_index${0}
 snippet wi      with_index
-	with_index ${0}
+	with_index${0}
 snippet eb      each_byte
-	each_byte ${0}
+	each_byte${0}
 snippet ec      each_char
-	each_char ${0}
+	each_char${0}
 snippet eli     each_line
-	each_line ${0}
+	each_line${0}
 snippet ep      传递键值分离的哈希对
-	each_pair ${0}
+	each_pair${0}
 snippet es      each_slice
-	each_slice ${0}
+	each_slice${0}
 # 类型转换
 snippet ta      转成数组
 	to_a${0}
@@ -198,9 +202,9 @@ snippet ins     约等同于to_s，输出信息比to_s更详细 [常用于调试
 	inspect${0}
 snippet tp      转换成Proc对象
 	to_proc${0}
-snippet tsy     将String转换成Symbol
+snippet tsy     转换成符号
 	to_sym${0}
-snippet te      返回一个枚举器
+snippet te      转换成枚举器
 	to_enum${0}
 snippet ef      to_enum的别名
 	enum_for${0}
@@ -210,25 +214,25 @@ snippet gr      grep
 snippet inj     求和
 	inject${0}
 snippet sel     选择符合条件的元素
-	select ${0}
+	select${0}
 snippet fia     select的别名
-	find_all ${0}
+	find_all${0}
 snippet rej     与select相反
-	reject ${0}
+	reject${0}
 snippet col     处理数组各个元素后返回
-	collect ${0}
+	collect${0}
 snippet m       collect的别名
-	map ${0}
+	map${0}
 snippet det     返回第一个满足条件的元素
-	detect ${0}
+	detect${0}
 snippet fi      detect的别名
-	find ${0}
+	find${0}
 snippet par     判断条件为真和为假的元素都返回
-	partition ${0}
+	partition${0}
 snippet z       同时取出多个集合的元素
-	zip(${0})
+	zip${0}
 snippet dei     如果...就删除
-	delete_if ${0}
+	delete_if${0}
 # 排序
 snippet so      sort
 	sort ${0}
@@ -293,21 +297,14 @@ snippet swc     字母大小写翻转
 snippet rev     字符串翻转
 	reverse${0}
 # 单个关键字
+snippet n       实例化对象
+	new${0}
 snippet pu      公有
-	public :${0}
-snippet pu.     公有 [换行]
-	public
-	${0}
+	public${0}
 snippet po      保护
-	protected :${0}
-snippet po.     保护 [换行]
-	protected
-	${0}
+	protected${0}
 snippet pr      私有
-	private :${0}
-snippet pr.     私有 [换行]
-	private
-	${0}
+	private${0}
 snippet re      返回
 	return ${0}
 snippet br      跳出当前循环体
@@ -320,6 +317,8 @@ snippet rt      重新开始执行当前代码块 [Ruby 1.9起不再支持迭代
 	retry${0}
 snippet yi      向代码块传递转移执行流程
 	yield${0}
+snippet lz      惰性迭代器 [Ruby2.0新增]
+	lazy${0}
 snippet du      对象克隆
 	dup${0}
 snippet su      super
@@ -388,8 +387,10 @@ snippet _f      当前文件名 [__dir__ + '/' + __FILE__ 就是完整的路径�
 snippet _en     当前文件编码
 	__ENCODING__${0}
 # 常用模块
-snippet Enu     迭代器
+snippet Enb     迭代器
 	Enumerable${0}
+snippet Ent     提供内部迭代器和外部迭代器
+	Enumerator${0}
 snippet Com     比较
 	Comparable${0}
 snippet Obs     观察者
@@ -428,5 +429,7 @@ snippet |       | .. |
 	|${1}| ${0}
 snippet <       { .. }
 	{ ${0} }
+snippet >      ->
+	->${0}
 snippet .       =>
 	=> ${0}
