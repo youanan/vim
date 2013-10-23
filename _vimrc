@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-22 18:31
+" -----------------     Date: 2013-10-23 08:33
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -191,9 +191,10 @@ au FileType ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
 au FileType ruby,eruby,slim,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
-au BufRead,BufNewFile *.h   setlocal ft=c
-au BufRead,BufNewFile *.sql setlocal ft=mysql
-au BufRead,BufNewFile *.txt setlocal ft=txt
+au BufRead,BufNewFile *.h     setlocal ft=c
+au BufRead,BufNewFile *.sql   setlocal ft=mysql
+au BufRead,BufNewFile *.txt   setlocal ft=txt
+au BufRead,BufNewFile *.dhtml setlocal ft=htmldjango
 
 
 " 设置着色模式和字体
@@ -323,18 +324,22 @@ if g:isWIN
 else
     let g:snippets_dir='~/.vim/snippets/'
 endif
-let g:snipMate                         = {}
+let g:snipMate                             = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
-let g:snipMate.scope_aliases           = {}
-let g:snipMate.scope_aliases['c']      = 'cpp'
-let g:snipMate.scope_aliases['php']    = 'php,html'
-let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
-let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
-let g:snipMate.scope_aliases['scss']   = 'scss,css'
-let g:snipMate.scope_aliases['jst']    = 'jst,html'
-let g:snipMate.scope_aliases['less']   = 'less,css'
-let g:snipMate.scope_aliases['xhtml']  = 'html'
-let g:snipMate.scope_aliases['html']   = 'html,angular'
+let g:snipMate.scope_aliases               = {}
+let g:snipMate.scope_aliases['c']          = 'cpp'
+let g:snipMate.scope_aliases['php']        = 'php,html'
+let g:snipMate.scope_aliases['smarty']     = 'smarty,html'
+let g:snipMate.scope_aliases['blade']      = 'blade,html'
+let g:snipMate.scope_aliases['twig']       = 'twig,html'
+let g:snipMate.scope_aliases['htmldjango'] = 'htmldjango,html'
+let g:snipMate.scope_aliases['jinja']      = 'jinja,html'
+let g:snipMate.scope_aliases['eruby']      = 'eruby,html'
+let g:snipMate.scope_aliases['scss']       = 'scss,css'
+let g:snipMate.scope_aliases['jst']        = 'jst,html'
+let g:snipMate.scope_aliases['less']       = 'less,css'
+let g:snipMate.scope_aliases['xhtml']      = 'html'
+let g:snipMate.scope_aliases['html']       = 'html,angular'
 
 
 " NERD_commenter      注释处理插件
@@ -356,7 +361,7 @@ let g:airline_theme='badwolf'                " 设置主题
 let g:syntastic_check_on_open=1              " 默认开启
 let g:syntastic_mode_map={'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby', 'scss']
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'python', 'eruby', 'scss']
             \}                               " 指定不需要检查的语言
 
 
@@ -459,8 +464,16 @@ func! Compile_Run_Code()
         else
             exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
+    elseif &filetype == "go"
+        if g:isWIN
+            exec "!go build %:t && %:r.exe"
+        else
+            exec "!go build %:t && ./%:r"
+        endif
     elseif &filetype == "php"
         exec "!php %:t"
+    elseif &filetype == "python"
+        exec "!python %:t"
     elseif &filetype == "ruby"
         exec "!ruby -w %:t"
     elseif &filetype == "coffee"
