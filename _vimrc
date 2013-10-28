@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-24 18:49
+" -----------------     Date: 2013-10-28 11:54
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -19,12 +19,6 @@ endif
 if g:atCompany
     " set tags+=D:/Ruchee/workspace/common/tags
     " set path+=D:/Ruchee/MinGW/include
-    " set tags+=D:/Ruchee/Rails/ruby/lib/ruby/gems/1.9.1/gems/actionpack-4.0.0/tags
-    " set tags+=D:/Ruchee/Rails/ruby/lib/ruby/gems/1.9.1/gems/activemodel-4.0.0/tags
-    " set tags+=D:/Ruchee/Rails/ruby/lib/ruby/gems/1.9.1/gems/activerecord-4.0.0/tags
-    " set tags+=D:/Ruchee/Rails/ruby/lib/ruby/gems/1.9.1/gems/activesupport-4.0.0/tags
-    " set tags+=D:/Ruchee/Rails/ruby/lib/ruby/gems/1.9.1/gems/actionmailer-4.0.0/tags
-    " set tags+=D:/Ruchee/Rails/ruby/lib/ruby/gems/1.9.1/gems/railties-4.0.0/tags
 else
     " set path+=D:/Develop/MinGW/include
 endif
@@ -200,7 +194,6 @@ au FileType scala,ruby,eruby,slim,coffee,jade,sh set tabstop=2
 au BufRead,BufNewFile *.h     setlocal ft=c
 au BufRead,BufNewFile *.sql   setlocal ft=mysql
 au BufRead,BufNewFile *.txt   setlocal ft=txt
-au BufRead,BufNewFile *.dhtml setlocal ft=htmldjango
 
 
 " 设置着色模式和字体
@@ -305,71 +298,69 @@ execute pathogen#infect()
 
 
 " MiniBufExplorer     多文件切换，也可使用鼠标双击相应文件名进行切换
-let g:miniBufExplMapWindowNavVim=1
-let g:miniBufExplMapWindowNavArrows=1
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplModSelTarget=1
+let g:miniBufExplMapWindowNavVim    = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs  = 1
+let g:miniBufExplModSelTarget       = 1
 
 " :Tlist              调用TagList
-let Tlist_Show_One_File=1                    " 只显示当前文件的tags
-let Tlist_Exit_OnlyWindow=1                  " 如果Taglist窗口是最后一个窗口则退出Vim
-let Tlist_Use_Right_Window=1                 " 在右侧窗口中显示
-let Tlist_File_Fold_Auto_Close=1             " 自动折叠
+let Tlist_Show_One_File        = 1             " 只显示当前文件的tags
+let Tlist_Exit_OnlyWindow      = 1             " 如果Taglist窗口是最后一个窗口则退出Vim
+let Tlist_Use_Right_Window     = 1             " 在右侧窗口中显示
+let Tlist_File_Fold_Auto_Close = 1             " 自动折叠
 
 " :LoadTemplate       根据文件后缀自动加载模板
 if g:isWIN
-    let g:template_path=$VIM.'/vimfiles/template/'
+    let g:template_path = $VIM.'/vimfiles/template/'
 else
-    let g:template_path='~/.vim/template/'
+    let g:template_path = '~/.vim/template/'
 endif
 
 " snipMate            Tab智能补全
-let g:snips_author='Ruchee'
+let g:snips_author = 'Ruchee'
 if g:isWIN
-    let g:snippets_dir=$VIM.'/snippets/'
+    let g:snippets_dir = $VIM.'/snippets/'
 else
-    let g:snippets_dir='~/.vim/snippets/'
+    let g:snippets_dir = '~/.vim/snippets/'
 endif
-let g:snipMate                             = {}
+let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
-let g:snipMate.scope_aliases               = {}
-let g:snipMate.scope_aliases['c']          = 'cpp'
-let g:snipMate.scope_aliases['php']        = 'php,html,codeigniter'
-let g:snipMate.scope_aliases['smarty']     = 'smarty,html'
-let g:snipMate.scope_aliases['blade']      = 'blade,html'
-let g:snipMate.scope_aliases['twig']       = 'twig,html'
-let g:snipMate.scope_aliases['htmldjango'] = 'htmldjango,html'
-let g:snipMate.scope_aliases['jinja']      = 'jinja,html'
-let g:snipMate.scope_aliases['ruby']       = 'ruby,rails'
-let g:snipMate.scope_aliases['eruby']      = 'eruby,html'
-let g:snipMate.scope_aliases['scss']       = 'scss,css'
-let g:snipMate.scope_aliases['jst']        = 'jst,html'
-let g:snipMate.scope_aliases['less']       = 'less,css'
-let g:snipMate.scope_aliases['xhtml']      = 'html'
-let g:snipMate.scope_aliases['html']       = 'html,angular'
+let g:snipMate.scope_aliases           = {}
+let g:snipMate.scope_aliases['c']      = 'cpp'
+let g:snipMate.scope_aliases['php']    = 'php,html'
+let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
+let g:snipMate.scope_aliases['blade']  = 'blade,html'
+let g:snipMate.scope_aliases['twig']   = 'twig,html'
+let g:snipMate.scope_aliases['ruby']   = 'ruby,rails'
+let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
+let g:snipMate.scope_aliases['scss']   = 'scss,css'
+let g:snipMate.scope_aliases['jst']    = 'jst,html'
+let g:snipMate.scope_aliases['less']   = 'less,css'
+let g:snipMate.scope_aliases['xhtml']  = 'html'
+let g:snipMate.scope_aliases['html']   = 'html,angular'
 
 
 " NERD_commenter      注释处理插件
-let NERDSpaceDelims=1                        " 自动添加前置空格
+let NERDSpaceDelims = 1                        " 自动添加前置空格
 
 " AuthorInfoDetect    自动添加作者、时间等信息，本质是NERD_commenter && authorinfo的结合
-let g:vimrc_author='Ruchee'                  " 昵称
-let g:vimrc_email='my@ruchee.com'            " 邮箱
-let g:vimrc_homepage='http://www.ruchee.com' " 个人主页
+let g:vimrc_author   = 'Ruchee'                " 昵称
+let g:vimrc_email    = 'my@ruchee.com'         " 邮箱
+let g:vimrc_homepage = 'http://www.ruchee.com' " 个人主页
 
 " Indent_guides       显示对齐线
-let g:indent_guides_enable_on_vim_startup=0  " 默认关闭
-let g:indent_guides_guide_size=1             " 指定对齐线的尺寸
+let g:indent_guides_enable_on_vim_startup = 0  " 默认关闭
+let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 
 " AirLine             彩色状态栏
-let g:airline_theme='badwolf'                " 设置主题
+let g:airline_theme = 'badwolf'                " 设置主题
 
 " Syntastic           语法检查
-let g:syntastic_check_on_open=1              " 默认开启
-let g:syntastic_mode_map={'mode': 'active',
+let g:syntastic_check_on_open = 1              " 默认开启
+let g:syntastic_mode_map      = {'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'scala', 'python', 'eruby', 'scss']
-            \}                               " 指定不需要检查的语言
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'scala', 'eruby', 'scss']
+            \}                                 " 指定不需要检查的语言 [主要是因为开启这些语言的语法检查会导致打开文件的速度奇慢]
 
 
 " ======= 自定义快捷键 ======= "
@@ -471,18 +462,12 @@ func! Compile_Run_Code()
         else
             exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
-    elseif &filetype == "go"
-        if g:isWIN
-            exec "!go build %:t && %:r.exe"
-        else
-            exec "!go build %:t && ./%:r"
-        endif
+    elseif &filetype == "java"
+        exec "!javac %:t && java %:r"
     elseif &filetype == "scala"
         exec "!scala %:t"
     elseif &filetype == "php"
         exec "!php %:t"
-    elseif &filetype == "python"
-        exec "!python %:t"
     elseif &filetype == "ruby"
         exec "!ruby -w %:t"
     elseif &filetype == "coffee"
@@ -507,10 +492,10 @@ vmap <leader>T <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
 
 " ======= Vimwiki ======= "
 
-let g:vimwiki_w32_dir_enc='utf-8' " 设置编码
-let g:vimwiki_use_mouse=1         " 使用鼠标映射
+let g:vimwiki_w32_dir_enc     = 'utf-8' " 设置编码
+let g:vimwiki_use_mouse       = 1       " 使用鼠标映射
 let g:vimwiki_valid_html_tags = 'a,img,b,i,s,u,sub,sup,br,hr,div,del,code,red,center,left,right,h1,h2,h3,h4,h5,h6,pre,script,style'
-                                  " 声明可以在wiki里面使用的HTML标签
+                                        " 声明可以在wiki里面使用的HTML标签
 let blog = {}
 if g:isWIN
     if g:atCompany
