@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-10-30 18:02
+" -----------------     Date: 2013-11-01 14:03
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -57,6 +57,7 @@ endif
 " \bb                        --按=号对齐代码
 " \bn                        --自定义对齐
 " \th                        --一键生成与当前编辑文件同名的HTML文件 [不输出行号]
+" \ev                        --编辑当前所使用的Vim配置文件
 "
 " \cc                        --添加注释               [NERD_commenter]
 " \cu                        --取消注释               [NERD_commenter]
@@ -184,8 +185,8 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType scheme,ruby,eruby,coffee,sh set shiftwidth=2
-au FileType scheme,ruby,eruby,coffee,sh set tabstop=2
+au FileType ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
+au FileType ruby,eruby,slim,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
@@ -323,10 +324,13 @@ endif
 let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
 let g:snipMate.scope_aliases           = {}
+let g:snipMate.scope_aliases['c']      = 'cpp'
 let g:snipMate.scope_aliases['php']    = 'php,html'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
 let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
-let g:snipMate.scope_aliases['scss']   = 'scss,html'
+let g:snipMate.scope_aliases['scss']   = 'scss,css'
+let g:snipMate.scope_aliases['jst']    = 'jst,html'
+let g:snipMate.scope_aliases['less']   = 'less,css'
 let g:snipMate.scope_aliases['xhtml']  = 'html'
 let g:snipMate.scope_aliases['html']   = 'html,angular'
 
@@ -350,7 +354,7 @@ let g:airline_theme = 'badwolf'                " 设置主题
 let g:syntastic_check_on_open = 1              " 默认开启
 let g:syntastic_mode_map      = {'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby', 'scss']
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby', 'scss', 'less']
             \}                                 " 指定不需要检查的语言 [主要是因为开启这些语言的语法检查会导致打开文件的速度奇慢]
 
 
@@ -436,6 +440,10 @@ nmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><
 vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 
 
+" \ev                 编辑当前所使用的Vim配置文件
+nmap <leader>ev <ESC>:e $MYVIMRC<CR>
+
+
 " ======= 编译 && 运行 && 模板 ======= "
 
 " 编译并运行
@@ -443,16 +451,24 @@ func! Compile_Run_Code()
     exec "w"
     if &filetype == "c"
         if g:isWIN
-            exec "!gcc -Wall -std=c99 -o %:r %:t && %:r.exe"
+            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
         else
-            exec "!gcc -Wall -std=c99 -o %:r %:t && ./%:r"
+            exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
         endif
-    elseif &filetype == "scheme"
-        exec "!guile -l %:t"
+    elseif &filetype == "cpp"
+        if g:isWIN
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
+        else
+            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
+        endif
     elseif &filetype == "php"
         exec "!php %:t"
     elseif &filetype == "ruby"
         exec "!ruby %:t"
+    elseif &filetype == "coffee"
+        exec "!coffee %:t"
+    elseif &filetype == "javascript"
+        exec "!node %:t"
     elseif &filetype == "sh"
         exec "!bash %:t"
     endif
