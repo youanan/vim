@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-11-01 14:03
+" -----------------     Date: 2013-11-03 21:34
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -324,9 +324,10 @@ endif
 let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
 let g:snipMate.scope_aliases           = {}
-let g:snipMate.scope_aliases['c']      = 'cpp'
-let g:snipMate.scope_aliases['php']    = 'php,html'
+let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
 let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
+let g:snipMate.scope_aliases['blade']  = 'blade,html'
+let g:snipMate.scope_aliases['twig']   = 'twig,html'
 let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
 let g:snipMate.scope_aliases['scss']   = 'scss,css'
 let g:snipMate.scope_aliases['jst']    = 'jst,html'
@@ -454,12 +455,6 @@ func! Compile_Run_Code()
             exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
         else
             exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
-        endif
-    elseif &filetype == "cpp"
-        if g:isWIN
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
-        else
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
     elseif &filetype == "php"
         exec "!php %:t"
