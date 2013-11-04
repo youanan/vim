@@ -53,6 +53,20 @@ snippet sp      水平分割
 	split ${0}
 snippet vsp     垂直分割
 	vsplit ${0}
+# 模式相关
+snippet no      Normal模式
+	normal ${0}
+snippet in      Insert模式
+	insert${0}
+snippet vi      Visual模式
+	visual${0}
+# 自动事件
+snippet ac      autocmd
+	autocmd ${0}
+snippet gr      命令分组
+	augroup ${1:gr_name}
+	    ${0}
+	augroup END
 # 输入输出
 snippet e       输出
 	echo ${0}
