@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-11-04 13:04
+" -----------------     Date: 2013-11-05 10:34
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -54,6 +54,7 @@ endif
 " \ww                        --打开Vimwiki主页
 " \nt                        --打开NERDTree文件树窗口
 " \tl                        --打开/关闭TagList/TxtBrowser窗口
+" \ff                        --打开ctrlp.vim文件搜索窗口
 " \ig                        --显示/关闭对齐线
 " \bb                        --按=号对齐代码
 " \bn                        --自定义对齐
@@ -186,8 +187,8 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType ruby,eruby,slim,coffee,sh set shiftwidth=2
-au FileType ruby,eruby,slim,coffee,sh set tabstop=2
+au FileType ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
+au FileType ruby,eruby,slim,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
@@ -322,14 +323,19 @@ if g:isWIN
 else
     let g:snippets_dir = '~/.vim/snippets/'
 endif
-let g:snipMate                        = {}
+let g:snipMate                         = {}
 " 设置补全项之间的继承关系，比如 PHP补全继承HTML的补全
-let g:snipMate.scope_aliases          = {}
-let g:snipMate.scope_aliases['php']   = 'php,html'
-let g:snipMate.scope_aliases['eruby'] = 'eruby,html'
-let g:snipMate.scope_aliases['scss']  = 'scss,css'
-let g:snipMate.scope_aliases['xhtml'] = 'html'
-let g:snipMate.scope_aliases['html']  = 'html,angular'
+let g:snipMate.scope_aliases           = {}
+let g:snipMate.scope_aliases['php']    = 'php,html,codeigniter'
+let g:snipMate.scope_aliases['smarty'] = 'smarty,html'
+let g:snipMate.scope_aliases['blade']  = 'blade,html'
+let g:snipMate.scope_aliases['twig']   = 'twig,html'
+let g:snipMate.scope_aliases['eruby']  = 'eruby,html'
+let g:snipMate.scope_aliases['scss']   = 'scss,css'
+let g:snipMate.scope_aliases['jst']    = 'jst,html'
+let g:snipMate.scope_aliases['less']   = 'less,css'
+let g:snipMate.scope_aliases['xhtml']  = 'html'
+let g:snipMate.scope_aliases['html']   = 'html,angular'
 
 
 " NERD_commenter      注释处理插件
@@ -351,7 +357,7 @@ let g:airline_theme = 'badwolf'                " 设置主题
 let g:syntastic_check_on_open = 1              " 默认开启
 let g:syntastic_mode_map      = {'mode': 'active',
             \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby', 'scss']
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby', 'scss', 'less']
             \}                                 " 指定不需要检查的语言 [主要是因为开启这些语言的语法检查会导致打开文件的速度奇慢]
 
 
@@ -403,6 +409,9 @@ nmap <leader>nt :NERDTree<CR>
 
 " \tl                 打开Taglist/TxtBrowser窗口，在右侧栏显示
 nmap <leader>tl :Tlist<CR><c-l>
+
+" \ff                 打开文件搜索窗口，在状态栏显示 [ctrlp.vim插件]
+nmap <leader>ff :CtrlP<CR>
 
 " \16                 十六进制格式查看
 nmap <leader>16 <ESC>:%!xxd<ESC>
