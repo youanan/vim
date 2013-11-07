@@ -1,7 +1,7 @@
 " -----------------   Author: Ruchee
 " -----------------    Email: my@ruchee.com
 " -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-11-06 13:45
+" -----------------     Date: 2013-11-07 11:04
 " -----------------     For Windows, Cygwin and Linux
 " -----------------  https://github.com/ruchee/vim
 
@@ -187,8 +187,8 @@ set shiftwidth=4
 set tabstop=4
 
 " 对部分语言设置单独的缩进
-au FileType lisp,ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
-au FileType lisp,ruby,eruby,slim,coffee,jade,sh set tabstop=2
+au FileType haskell,ocaml,lisp,ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
+au FileType haskell,ocaml,lisp,ruby,eruby,slim,coffee,jade,sh set tabstop=2
 
 " 根据后缀名指定文件类型
 au BufRead,BufNewFile *.h   setlocal ft=c
@@ -471,12 +471,24 @@ func! Compile_Run_Code()
         else
             exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
         endif
+    elseif &filetype == "haskell"
+        if g:isWIN
+            exec "!ghc --make -o %:r %:t && %:r.exe"
+        else
+            exec "!ghc --make -o %:r %:t && ./%:r"
+        endif
+    elseif &filetype == "ocaml"
+        if g:isWIN
+            exec "!ocamlc -o %:r.exe %:t && %:r.exe"
+        else
+            exec "!ocamlc -o %:r %:t && ./%:r"
+        endif
     elseif &filetype == "lisp"
         exec "!clisp -i %:t"
     elseif &filetype == "php"
         exec "!php %:t"
     elseif &filetype == "ruby"
-        exec "!ruby200 %:t"
+        exec "!ruby %:t"
     elseif &filetype == "coffee"
         exec "!coffee %:t"
     elseif &filetype == "javascript"
