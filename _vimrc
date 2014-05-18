@@ -1,9 +1,9 @@
-" -----------------   Author: Ruchee
-" -----------------    Email: my@ruchee.com
-" -----------------  WebSite: http://www.ruchee.com
-" -----------------     Date: 2013-11-07 11:04
+" -----------------   Author: youanan
+" -----------------    Email: youanan@163.com 
+" -----------------  WebSite: http://youanan.com
+" -----------------     Date: 2014-05-18 11:04
 " -----------------     For Windows, Cygwin and Linux
-" -----------------  https://github.com/ruchee/vim
+" -----------------  https://github.com/youanan/vim
 
 
 " 设置工作地点标志（在公司为1，在家为0）
@@ -518,13 +518,13 @@ let g:vimwiki_valid_html_tags = 'a,img,b,i,s,u,sub,sup,br,hr,div,del,code,red,ce
 let blog = {}
 if g:isWIN
     if g:atCompany
-        let blog.path          = 'D:/Ruchee/Files/mysite/wiki/'
-        let blog.path_html     = 'D:/Ruchee/Files/mysite/html/'
-        let blog.template_path = 'D:/Ruchee/Files/mysite/templates/'
+        let blog.path          = 'E:/My documents/mysite/youanan.com/vimwiki/'
+        let blog.path_html     = 'E:/My documents/mysite/youanan.com/wiki/'
+        let blog.template_path = 'E:/My documents/mysite/youanan.com/templates/'
     else
-        let blog.path          = 'D:/Ruchee/mysite/wiki/'
-        let blog.path_html     = 'D:/Ruchee/mysite/html/'
-        let blog.template_path = 'D:/Ruchee/mysite/templates/'
+        let blog.path          = 'E:/My documents/mysite/youanan.com/vimwiki/'
+        let blog.path_html     = 'E:/My documents/mysite/youanan.com/wiki/'
+        let blog.template_path = 'E:/My documents/mysite/youanan.com/templates/'
     endif
 else
     let blog.path          = '~/mysite/wiki/'
@@ -532,7 +532,7 @@ else
     let blog.template_path = '~/mysite/templates/'
 endif
 let blog.template_default  = 'site'
-let blog.template_ext      = '.html'
+let blog.template_ext      = '.htm'
 let blog.auto_export       = 1
 
 let g:vimwiki_list = [blog]
