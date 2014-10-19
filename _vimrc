@@ -1,5 +1,5 @@
 " -----------------   Author: youanan
-" -----------------    Email: youanan@163.com 
+" -----------------    Email: youanan@163.com
 " -----------------  WebSite: http://youanan.com
 " -----------------     Date: 2014-05-18 11:04
 " -----------------     For Windows, Cygwin and Linux
@@ -15,13 +15,6 @@ else
 endif
 
 
-" 设置头文件和tags路径，用于代码补全
-if g:atCompany
-    " set tags+=D:/Ruchee/workspace/common/tags
-    " set path+=D:/Ruchee/MinGW/include
-else
-    " set path+=D:/Develop/MinGW/include
-endif
 
 
 
@@ -199,24 +192,28 @@ au BufRead,BufNewFile *.txt setlocal ft=txt
 " 设置着色模式和字体
 if g:isGUI
     colorscheme molokai
-    set guifont=Monaco:h11
+    set guifont=Bitstream_Vera_Sans_Mono:h11:cANSI
+    set guifontwide=Yahei_Mono:h11:cGB2312
 else
     colorscheme tango2
-    set guifont=Monaco:h11
+    ""set guifont=Monaco:h11
+    set guifont=YaHei\ Consolas\ Hybrid:h12:cANSI
+    set guifontwide=YaHei\ Consolas\ Hybrid:h12
 endif
 
-
+set shortmess=atI           "启动时不显示乌干达儿童
 set backspace=2              " 设置退格键可用
 set autoindent               " 自动对齐
 set ai!                      " 设置自动缩进
 set smartindent              " 智能自动缩进
-set relativenumber           " 开启相对行号
+"set relativenumber           " 开启相对行号
 set nu!                      " 显示行号
 set mouse=a                  " 启用鼠标
 set ruler                    " 右下角显示光标位置的状态行
 set incsearch                " 开启实时搜索功能
 set hlsearch                 " 开启高亮显示结果
 set nowrapscan               " 搜索到文件两端时不重新搜索
+set nowrap                   " 设置整行显示，不换行
 set nocompatible             " 关闭兼容模式
 set hidden                   " 允许在有未保存的修改时切换缓冲区
 set autochdir                " 设定文件浏览器目录为当前目录
@@ -256,11 +253,11 @@ endif
 " 使用GUI界面时的设置
 if g:isGUI
     " 启动时自动最大化窗口
-    if g:isWIN
-        au GUIEnter * simalt ~x
-    endif
-    "winpos 20 20            " 指定窗口出现的位置，坐标原点在屏幕左上角
-    "set lines=20 columns=90 " 指定窗口大小，lines为高度，columns为宽度
+    """"if g:isWIN
+    """"    au GUIEnter * simalt ~x
+    """"endif
+    winpos 260 220            " 指定窗口出现的位置，坐标原点在屏幕左上角
+    set lines=18 columns=80 " 指定窗口大小，lines为高度，columns为宽度
     set guioptions+=c        " 使用字符提示框
     set guioptions-=m        " 隐藏菜单栏
     set guioptions-=T        " 隐藏工具栏
@@ -317,7 +314,7 @@ else
 endif
 
 " snipMate            Tab智能补全
-let g:snips_author = 'Ruchee'
+let g:snips_author = 'youan'
 if g:isWIN
     let g:snippets_dir = $VIM.'/snippets/'
 else
@@ -343,9 +340,9 @@ let g:snipMate.scope_aliases['html']   = 'html,angular'
 let NERDSpaceDelims = 1                        " 自动添加前置空格
 
 " AuthorInfoDetect    自动添加作者、时间等信息，本质是NERD_commenter && authorinfo的结合
-let g:vimrc_author   = 'Ruchee'                " 昵称
-let g:vimrc_email    = 'my@ruchee.com'         " 邮箱
-let g:vimrc_homepage = 'http://www.ruchee.com' " 个人主页
+let g:vimrc_author   = 'youanan'                " 昵称
+let g:vimrc_email    = 'i@youanan.com'         " 邮箱
+let g:vimrc_homepage = 'http://www.youanan.com' " 个人主页
 
 " Indent_guides       显示对齐线
 let g:indent_guides_enable_on_vim_startup = 0  " 默认关闭
@@ -453,7 +450,6 @@ vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><
 " \ev                 编辑当前所使用的Vim配置文件
 nmap <leader>ev <ESC>:e $MYVIMRC<CR>
 
-
 " ======= 编译 && 运行 && 模板 ======= "
 
 " 编译并运行
@@ -518,13 +514,13 @@ let g:vimwiki_valid_html_tags = 'a,img,b,i,s,u,sub,sup,br,hr,div,del,code,red,ce
 let blog = {}
 if g:isWIN
     if g:atCompany
-        let blog.path          = 'E:/My documents/mysite/youanan.com/vimwiki/'
-        let blog.path_html     = 'E:/My documents/mysite/youanan.com/wiki/'
-        let blog.template_path = 'E:/My documents/mysite/youanan.com/templates/'
+        let blog.path          = 'E:\weiyun\mysite\youanan.com\vimwiki\'
+        let blog.path_html     = 'E:\weiyun\mysite/youanan.com\wiki\'
+        let blog.template_path = 'E:\weiyun\mysite\youanan.com\templates\'
     else
-        let blog.path          = 'E:/My documents/mysite/youanan.com/vimwiki/'
-        let blog.path_html     = 'E:/My documents/mysite/youanan.com/wiki/'
-        let blog.template_path = 'E:/My documents/mysite/youanan.com/templates/'
+        let blog.path          = 'E:\WeiYun\mysite\youanan.com\vimwiki\'
+        let blog.path_html     = 'E:\WeiYun\mysite/youanan.com\wiki\'
+        let blog.template_path = 'E:\WeiYun\mysite\youanan.com\templates\'
     endif
 else
     let blog.path          = '~/mysite/wiki/'
@@ -536,3 +532,32 @@ let blog.template_ext      = '.htm'
 let blog.auto_export       = 1
 
 let g:vimwiki_list = [blog]
+
+let g:vimwiki_html_header_numbering = 4
+
+"========bundle======="
+set nocompatible
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp +=$VIM/vimfiles/bundle/Vundle.vim/
+let path = '$VIM/vimfiles/bundle'
+call vundle#rc(path)
+Bundle 'gmarik/vundle'
+filetype plugin indent on
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+"my plugins"
+Plugin 'VimIM'
+Plugin 'vimwiki'
+Plugin 'indent-guides'
+
+
+
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+"==========bundle结束================"
+
