@@ -2,8 +2,8 @@
 " -----------------    Email: youanan@163.com
 " -----------------  WebSite: http://youanan.com
 " -----------------     Date: 2014-05-18 11:04
-" -----------------     For Windows, Cygwin and Linux
-" -----------------  https://github.com/youanan/vim
+" -----------------      For: Windows
+" -----------------   GitHub: https://github.com/youanan/vim
 
 
 " 设置工作地点标志（在公司为1，在家为0）
@@ -13,10 +13,6 @@ if filereadable("D:/atCompany.txt")
 else
     let g:atCompany = 0
 endif
-
-
-
-
 
 " ---------- Ctrl系按键 ----------
 "
@@ -176,8 +172,8 @@ endif
 
 
 " 设置通用缩进策略
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=3
+set tabstop=3
 
 " 对部分语言设置单独的缩进
 au FileType haskell,ocaml,lisp,ruby,eruby,slim,coffee,jade,sh set shiftwidth=2
@@ -227,7 +223,7 @@ set nobackup
 set list                     " 显示特殊字符，其中Tab使用高亮竖线代替，尾部空白使用高亮点号代替
 set listchars=tab:\|\ ,trail:.
 set expandtab                " 将Tab自动转化成空格 [需要输入真正的Tab键时，使用 Ctrl+V + Tab]
-"set showmatch               " 显示括号配对情况
+set showmatch               " 显示括号配对情况
 "set nowrap                  " 设置不自动换行
 
 syntax enable                " 打开语法高亮
@@ -290,10 +286,6 @@ function ClosePair(char)
 endf
 
 
-" 加载pathogen插件管理器
-execute pathogen#infect()
-
-
 " MiniBufExplorer     多文件切换，也可使用鼠标双击相应文件名进行切换
 let g:miniBufExplMapWindowNavVim    = 1
 let g:miniBufExplMapWindowNavArrows = 1
@@ -314,7 +306,7 @@ else
 endif
 
 " snipMate            Tab智能补全
-let g:snips_author = 'youan'
+let g:snips_author = 'youanan'
 if g:isWIN
     let g:snippets_dir = $VIM.'/snippets/'
 else
@@ -446,63 +438,18 @@ imap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><
 nmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 vmap <leader>th <ESC>:set nonumber<CR>:set norelativenumber<CR><ESC>:TOhtml<CR><ESC>:w %:r.html<CR><ESC>:q<CR>:set number<CR>:set relativenumber<CR>
 
+"=======VimIM config====="
+""Vimim 热键设置:g:vimim_map
+
+"Ctrl-\ 开关输入法
+:let g:vimim_map='c-bslash' 
+
+
+"=======VimIM config end====="
+
 
 " \ev                 编辑当前所使用的Vim配置文件
 nmap <leader>ev <ESC>:e $MYVIMRC<CR>
-
-" ======= 编译 && 运行 && 模板 ======= "
-
-" 编译并运行
-func! Compile_Run_Code()
-    exec "w"
-    if &filetype == "c"
-        if g:isWIN
-            exec "!gcc -Wall -std=c11 -o %:r %:t && %:r.exe"
-        else
-            exec "!gcc -Wall -std=c11 -o %:r %:t && ./%:r"
-        endif
-    elseif &filetype == "cpp"
-        if g:isWIN
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && %:r.exe"
-        else
-            exec "!g++ -Wall -std=c++11 -o %:r %:t && ./%:r"
-        endif
-    elseif &filetype == "haskell"
-        if g:isWIN
-            exec "!ghc --make -o %:r %:t && %:r.exe"
-        else
-            exec "!ghc --make -o %:r %:t && ./%:r"
-        endif
-    elseif &filetype == "ocaml"
-        if g:isWIN
-            exec "!ocamlc -o %:r.exe %:t && %:r.exe"
-        else
-            exec "!ocamlc -o %:r %:t && ./%:r"
-        endif
-    elseif &filetype == "lisp"
-        exec "!clisp -i %:t"
-    elseif &filetype == "php"
-        exec "!php %:t"
-    elseif &filetype == "ruby"
-        exec "!ruby %:t"
-    elseif &filetype == "coffee"
-        exec "!coffee %:t"
-    elseif &filetype == "javascript"
-        exec "!node %:t"
-    elseif &filetype == "sh"
-        exec "!bash %:t"
-    endif
-endfunc
-
-" \R         一键保存、编译、运行
-imap <leader>R <ESC>:call Compile_Run_Code()<CR>
-nmap <leader>R :call Compile_Run_Code()<CR>
-vmap <leader>R <ESC>:call Compile_Run_Code()<CR>
-
-" \T         一键加载语法模板
-imap <leader>T <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
-nmap <leader>T :LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
-vmap <leader>T <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi
 
 
 " ======= Vimwiki ======= "
@@ -513,14 +460,14 @@ let g:vimwiki_valid_html_tags = 'a,img,b,i,s,u,sub,sup,br,hr,div,del,code,red,ce
                                         " 声明可以在wiki里面使用的HTML标签
 let blog = {}
 if g:isWIN
-    if g:atCompany
+    if g:atCompany 
         let blog.path          = 'E:\weiyun\mysite\youanan.com\vimwiki\'
-        let blog.path_html     = 'E:\weiyun\mysite/youanan.com\wiki\'
+        let blog.path_html     = 'E:\weiyun\mysite\youanan.com\wiki\'
         let blog.template_path = 'E:\weiyun\mysite\youanan.com\templates\'
     else
-        let blog.path          = 'E:\WeiYun\mysite\youanan.com\vimwiki\'
-        let blog.path_html     = 'E:\WeiYun\mysite/youanan.com\wiki\'
-        let blog.template_path = 'E:\WeiYun\mysite\youanan.com\templates\'
+        let blog.path          = 'E:\My documents\Mysite\youanan.com\vimwiki\'
+        let blog.path_html     = 'E:\My documents\Mysite\youanan.com\wiki\'
+        let blog.template_path = 'E:\My documents\Mysite\youanan.com\templates\'
     endif
 else
     let blog.path          = '~/mysite/wiki/'
@@ -536,28 +483,38 @@ let g:vimwiki_list = [blog]
 let g:vimwiki_html_header_numbering = 4
 
 "========bundle======="
-set nocompatible
-filetype off                  " required
-" set the runtime path to include Vundle and initialize
-set rtp +=$VIM/vimfiles/bundle/Vundle.vim/
-let path = '$VIM/vimfiles/bundle'
-call vundle#rc(path)
-Bundle 'gmarik/vundle'
-filetype plugin indent on
+set nocompatible              " be iMproved
+filetype off                  " required!
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+set rtp+=$VIM/vimfiles/bundle/vundle/  
+call vundle#rc('$VIM/vimfiles/bundle/')  
+Bundle 'gmarik/vundle'  
+filetype plugin indent on 
 
-"my plugins"
-Plugin 'VimIM'
-Plugin 'vimwiki'
-Plugin 'indent-guides'
+" original repos on github<br>Bundle 'mattn/zencoding-vim'  
+Bundle 'drmingdrmer/xptemplate'  
 
 
+" 可以通过以下四种方式指定插件的来源
 
+" a) 指定Github中vim-scripts仓库中的插件，直接指定插件名称即可，插件明中的空格使用“-”代替。
+"
+Bundle 'L9'
+Bundle 'VimIM'
+Bundle 'Vimwiki'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+" b) 指定Github中其他用户仓库的插件，使用“用户名/插件名称”的方式指定
+"Bundle 'tpope/vim-fugitive'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+"Bundle 'tpope/vim-rails.git'
+
+" c) 指定非Github的Git仓库的插件，需要使用git地址
+"Bundle 'git://git.wincent.com/command-t.git'
+
+" d) 指定本地Git仓库中的插件
+"Bundle 'file:///Users/gmarik/path/to/plugin'
+
+filetype plugin indent on     " required!
 "==========bundle结束================"
 
